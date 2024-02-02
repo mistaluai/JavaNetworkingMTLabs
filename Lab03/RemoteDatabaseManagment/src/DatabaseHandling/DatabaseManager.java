@@ -54,7 +54,8 @@ public class DatabaseManager {
     private String parseURL() {
         StringBuilder url = new StringBuilder("jdbc:sqlserver://" + hostname + ":" + portNumber + ";");
         url.append("databaseName=" + dbName + ";");
-        url.append(compileProperties());
+        if (hasProperties)
+            url.append(compileProperties());
         return url.toString();
     }
 
@@ -82,6 +83,15 @@ public class DatabaseManager {
             dbOperations = new DatabaseOperations(dbConnection);
             return true;
         }
+        System.out.println("Failed to establish connection");
         return false;
+    }
+
+    /**
+     * getter method for the operations handler of the database
+     * @return returns object type of DatabaseOperations
+     */
+    public DatabaseOperations getDatabaseOperations() {
+        return dbOperations;
     }
 }

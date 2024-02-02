@@ -1,12 +1,15 @@
 package DatabaseHandling;
 
-import java.sql.*;
+import java.sql.SQLException;
 
 public class DatabaseConnectionTest {
     public static void main(String[] args) throws SQLException {
         System.setProperty("java.net.preferIPv6Addresses", "true");
-        Connection c = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=Employees;trustServerCertificate=true;"
-                , "SA", "15&12&L1l2l3l4");
-        c.prepareStatement("CREATE DATABASE Hello").executeQuery();
+        DatabaseManager dbm =
+                new DatabaseManager("localhost", 1433, "Employees", "SA", "15&12&L1l2l3l4", "trustServerCertificate=true");
+        if (dbm.establishConnection()) {
+            DatabaseOperations dbo = dbm.getDatabaseOperations();
+
+        }
     }
 }
