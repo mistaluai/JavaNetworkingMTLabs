@@ -10,7 +10,7 @@ import java.util.List;
 
 public class Client {
     IServer server;
-    Client() throws RemoteException, NotBoundException {
+    public Client() throws RemoteException, NotBoundException {
         Registry registry = LocateRegistry.getRegistry(1099);
         server = (IServer) registry.lookup("Server");
     }
