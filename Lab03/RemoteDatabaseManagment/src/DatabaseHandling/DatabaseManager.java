@@ -27,8 +27,8 @@ public class DatabaseManager {
         this(hostname, dbName, username, password);
         this.portNumber = portNumber;
     }
-    DatabaseManager(String hostname, int portNumber, String dbName,
-                    String username, String password, String properties) {
+    public DatabaseManager(String hostname, int portNumber, String dbName,
+                           String username, String password, String properties) {
         this(hostname,portNumber, dbName, username, password);
         this.properties = properties;
         hasProperties = true;
